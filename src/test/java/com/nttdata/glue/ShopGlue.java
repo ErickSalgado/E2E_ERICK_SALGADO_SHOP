@@ -14,37 +14,37 @@ public class ShopGlue {
     @CastMember(name = "erick")
     Actor erick;
 
-    @Given("Inicio sesion$")
-    public void login() {
+    @Given("^Inicio sesion (.*) (.*)$")
+    public void login(String username, String password) {
         erick.attemptsTo(
-                LoginPage.login("standard_user", "secret_sauce")
+                LoginPage.login(username, password)
         );
     }
 
-    @Given("Selecciono dos productos del catalogo")
-    public void selectProducts() {
+    @Given("^Selecciono dos productos del catalogo (.*) (.*)$")
+    public void selectProducts(String product1, String product2) {
         erick.attemptsTo(
-                CatalogPage.addProduct("#add-to-cart-sauce-labs-backpack"),
-                CatalogPage.addProduct("#add-to-cart-sauce-labs-fleece-jacket")
+                CatalogPage.addProduct(product1),
+                CatalogPage.addProduct(product2)
         );
     }
 
-    @Then("Ingreso al carrito de compras")
+    @Then("Ingreso al carrito de compras$")
     public void visitCart() {
         erick.attemptsTo(
                 CatalogPage.visitCart()
         );
     }
 
-    @And("Completo el formulario de compra")
-    public void completeShopForm() {
+    @And("^Completo el formulario de compra con (.*) (.*) (.*)$")
+    public void completeShopForm(String firstName, String lastName, String postalCode) {
         erick.attemptsTo(
                 CatalogPage.openCheckout(),
-                CheckoutPage.completeCheckout("Erick", "Salgado", "170404")
+                CheckoutPage.completeCheckout(firstName, lastName, postalCode)
         );
     }
 
-    @And("Finalizo la compra")
+    @And("Finalizo la compra$")
     public void finishShop() {
         erick.attemptsTo(
                 CheckoutPage.finishCheckout()

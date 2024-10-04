@@ -17,6 +17,7 @@ Asegúrate de tener instalado lo siguiente en tu máquina local:
 - IDE: IntelliJ IDEA 2024.1.3 o superior
 - Gradle: versión 8.5 (configurado en la variable de entorno PATH)
 - JDK: versión 17 (configurado en la variable de entorno JAVA_HOME)
+- Si se va a utilizar chrome como navegador predeterminado, se debe reemplazar el path en resources/serenity.properties
 
 ## Instalación
 
